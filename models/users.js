@@ -7,13 +7,13 @@ var Sequelize = require("sequelize");
 // var sequelize = require("../config/config.js");
 
 // Creates a "User" model that matches up with DB
-module.exports = function (sequelize, DataTypes) {
+module.exports = function (sequelize, DataTypes, Users) {
   var Users = sequelize.define("Users", {
-    user_id: {
-      type: Sequelize.INTEGER,
-      autoIncrement: true,
-      primaryKey: true
-    },
+    // user_id: {
+    //   type: Sequelize.INTEGER,
+    //   autoIncrement: true,
+    //   primaryKey: true
+    // },
     userName: {
       type:Sequelize.STRING
     },
@@ -38,11 +38,11 @@ module.exports = function (sequelize, DataTypes) {
   },{
     classMethods: {
         associate: function (models) {
-          Users.hasMany(Events, {
-            through: userEvents
+          Users.belongsToMany(models.Events, {
+            through: "userEvents"
           });
-          Users.belongsToMany(Teams,{
-            through: userTeams
+          Users.belongsToMany(models.Teams, {
+            through: "userTeams"
           });
         }
 
