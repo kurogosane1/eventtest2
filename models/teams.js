@@ -5,7 +5,7 @@
 var Sequelize = require("sequelize");
 module.exports = function (sequelize, DataTypes) {
     var Teams = sequelize.define("Teams", {
-        team_id: {
+        id: {
             type: Sequelize.INTEGER,
             autoIncrement: true,
             primaryKey: true
@@ -27,9 +27,6 @@ module.exports = function (sequelize, DataTypes) {
         },
         roles: {
             type: Sequelize.STRING
-        },
-        event_id: {
-            type: Sequelize.INTEGER
         }
     }, {
         classMethods: {
@@ -43,9 +40,8 @@ module.exports = function (sequelize, DataTypes) {
                     through: "userTeams"
                 });
             },
+            timestamps: false
         },
-    }, {
-        timestamps: false
     });
     return Teams;
 };

@@ -12,7 +12,7 @@ var Users = require("./users.js")
 // Creates a "event" model that matches up with DB
 module.exports = function (sequelize, DataTypes) {
   var Events = sequelize.define("Events", {
-    event_id: {
+    id: {
       type: Sequelize.INTEGER,
       autoIncrement: true,
       primaryKey: true
@@ -50,7 +50,7 @@ module.exports = function (sequelize, DataTypes) {
     },
     state: {
       type: Sequelize.STRING
-    },
+    }
 
   }, {
     classMethods: {
@@ -62,13 +62,9 @@ module.exports = function (sequelize, DataTypes) {
           // through: eventTeams
           foreignKey: "team_id"
         })
-      }
-
+      },
+       timestamps: false
     }
-  }, {
-
-    timestamps: false
   });
-
   return Events;
 };

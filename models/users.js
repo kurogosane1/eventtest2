@@ -44,13 +44,10 @@ module.exports = function (sequelize, DataTypes, Users) {
           Users.belongsToMany(models.Teams, {
             through: "userTeams"
           });
-        }
-
+        },
+        timestamps: false
       }
-    },
-    {
-    timestamps: false
-  });
+    });
 
   return Users;
 };
