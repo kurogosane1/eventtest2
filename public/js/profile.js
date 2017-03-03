@@ -67,7 +67,7 @@ console.log(data);
       var row = $("<div>");
       row.addClass("user-created");
 
-      row.append("<p>" + data[i].user_name + "</p>");
+      row.append("<p>" + data[i].userName + "</p>");
       row.append("<p>" + data[i].Experience+ "</p>");
     //   var testDate = '01-01-2015 ' + data[i].time;
     //   //var testDate = new Date(a);

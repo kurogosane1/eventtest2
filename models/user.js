@@ -35,35 +35,22 @@ module.exports = function (sequelize, DataTypes) {
     Bio: {
       type: Sequelize.TEXT
     }
-  },
+  },{
+    classMethods: {
+        associate: function (models) {
+          Users.hasMany(Events, {
+            through: userEvents
+          });
+          Users.belongsToMany(Teams,{
+            through: userTeams
+          });
+        }
+
+      }
+    },
     {
     timestamps: false
   });
 
   return Users;
 };
-
-
-
-
-  
-  // classMethods: {
-  //   associate: function (models) {
-  //     Projects.belongsToMany(User, {
-  //       through: 'Users',
-  //       foreignKey: 'event_id'
-  //     });
-  //     Projects.belongsToMany(models.User, {
-  //       foreignKey: {
-  //         name: 'user_id',
-  //         allowNull: false
-  //                   }
-  //           });
-  //                       }
-  //           },
-
-// Syncs with DB
-// Users.sync({});
-
-// Makes the Chirp Model available for other files (will also create a table)
-// module.exports = Users;

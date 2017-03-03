@@ -8,52 +8,65 @@ var Sequelize = require("sequelize");
 
 // Creates a "event" model that matches up with DB
 module.exports = function (sequelize, DataTypes) {
-  var Events = sequelize.define("Events", {
-    Event_id: {
-      type: Sequelize.INTEGER,
-      autoIncrement: true,
-      primaryKey: true
-    },
-    author: {
-      type: Sequelize.TEXT
-    },
-    Status: {
-      type: Sequelize.STRING,
-      defaultValue: "Host"
-    },
-    event_Name: {
-      type: Sequelize.STRING
-    },
-    description: {
-      type: Sequelize.TEXT
-    },
-    when_at: {
-      type: Sequelize.DATE
-    },
-    time: {
-      type: Sequelize.TIME
-    },
-    attendee: {
-      type: Sequelize.INTEGER
-    },
-    location: {
-      type: Sequelize.STRING
-    }
-  }, {
-    timestamps: false
-  });
+    var Events = sequelize.define("Events", {
+        id: {
+          type: Sequelize.INTEGER,
+          autoIncrement: true,
+          primaryKey: true
+        },
+        creator: {
+          type: Sequelize.INTEGER
+        },
+        // Status: {
+        //   type: Sequelize.STRING,
+        //   defaultValue: "Host"
+        // },
+        event_Name: {
+          type: Sequelize.STRING
+        },
+        description: {
+          type: Sequelize.TEXT
+        },
+        when_at: {
+          type: Sequelize.DATE
+        },
+        time: {
+          type: Sequelize.TIME
+        },
+        // attendee: {
+        //   type: Sequelize.INTEGER
+        // },
+        street_number: {
+          type: Sequelize.INTEGER
+        },
+        street: {
+          type: Sequelize.STRING
+        },
+        City: {
+          type: Sequelize.STRING
+        },
+        state: {
+          type: Sequelize.STRING
+        },
+        
+    },{
+    classMethods: {
+        associate: function (models) {
+          Events.belongsToMany(Users, {
+            through: userEvents
+          });
+          Events.hasMany(Teams,{
+            // through: eventTeams
+            foreignKey: "team_id"
+          })
+        }
 
-  return Events;
-}
+      }
+    },
+     {
+          
+          timestamps: false
+        });
 
-// console.log(Events);
-
-// creating a table to test upoming pop up//
-
-
-
-// Syncs with DB
-// Events.sync({});
-
-// Makes the Chirp Model available for other files (will also create a table)
-// module.exports = Events;
+      return Events;
+    };
