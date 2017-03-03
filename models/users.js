@@ -49,7 +49,7 @@ module.exports = function (sequelize, DataTypes, Users) {
       }
     },
     {
-    timestamps: false
+    timestamps: true
   });
 
   return Users;
