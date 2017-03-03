@@ -14,25 +14,25 @@ module.exports = function (sequelize, DataTypes, Users) {
     //   autoIncrement: true,
     //   primaryKey: true
     // },
-    userName: {
+    username: {
       type:Sequelize.STRING
     },
-    First_name: {
+    first_name: {
       type:Sequelize.STRING
     },
-    Last_name: {
+    last_name: {
       type:Sequelize.STRING
     },
-    Skills: {
+    skills: {
       type: Sequelize.TEXT,
     },
-    Language: {
+    language: {
       type: Sequelize.STRING
     },
-    Experience: {
+    experience: {
       type: Sequelize.TEXT
     },
-    Bio: {
+    bio: {
       type: Sequelize.TEXT
     }
   },{

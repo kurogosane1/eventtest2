@@ -19,9 +19,9 @@ module.exports = function (sequelize, DataTypes) {
         team_name: {
             type: Sequelize.STRING
         },
-        users: {
-            type: Sequelize.STRING
-        },
+        // users: {
+        //     type: Sequelize.STRING
+        // },
         p_description: {
             type: Sequelize.TEXT
         },

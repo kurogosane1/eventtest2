@@ -45,7 +45,7 @@ module.exports = function (sequelize, DataTypes) {
     street: {
       type: Sequelize.STRING
     },
-    City: {
+    city: {
       type: Sequelize.STRING
     },
     state: {
