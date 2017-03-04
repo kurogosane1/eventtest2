@@ -17,7 +17,7 @@ module.exports = function(app){
         });
     });
 // Add a new event
-    app.post('/api/event', function(req, res){
+    app.post('/api/new/events', function(req, res){
         console.log('event data');
         console.log(req.body);
         db.Events.create({

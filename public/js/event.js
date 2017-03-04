@@ -22,7 +22,7 @@ $("#event-submit").on("click", function(event) {
     when_at: $('#when_at').val(),
     street_number: $("#street_at").val().trim(),
     street: $("#streetName_at").val().trim(),
-    city: $("#city_at").val().trim(),
+    City: $("#city_at").val().trim(),
     state: $("#state_at").val().trim(),
     attendee: parseInt($("#who-attends").val()),
     time: $("#time_at").val()
@@ -31,7 +31,7 @@ $("#event-submit").on("click", function(event) {
   console.log(newEvent);
 
   // Send an AJAX POST-request with jQuery
-  $.post("/api/new/", newEvent)
+  $.post("/api/new/events", newEvent)
     // On success, run the following code
     .done(function() {
       
