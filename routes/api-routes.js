@@ -27,12 +27,13 @@ module.exports = function(app){
             // attendee: req.body.attendee,
             street_number:req.body.street_number,
             street:req.body.street,
-            City :req.body.city,
+            city :req.body.city,
             state :req.body.state,
             description : req.body.description,
             when_at: req.body.when_at
         }).then(function(results){
             res.json(results);
+            //me trying to combine the database//
         })
 
 

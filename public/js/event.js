@@ -22,7 +22,7 @@ $("#event-submit").on("click", function(event) {
     when_at: $('#when_at').val(),
     street_number: $("#street_at").val().trim(),
     street: $("#streetName_at").val().trim(),
-    City: $("#city_at").val().trim(),
+    city: $("#city_at").val().trim(),
     state: $("#state_at").val().trim(),
     attendee: parseInt($("#who-attends").val()),
     time: $("#time_at").val()
@@ -41,7 +41,10 @@ $("#event-submit").on("click", function(event) {
 
       row.append("<p>" + newEvent.event_Name + "</p>");
       row.append("<p>" + newEvent.description + "</p>");
-      row.append("<p>At " + (newEvent.when_at) + "</p>");
+      var timeAt = '01-01-2015 ' + newEvent.time;
+      var whenAt = newEvent.when_at;
+      console.log(whenAt);
+      row.append("<p>On " + moment(whenAt).format("LL")+ " "+ "at " + moment(timeAt).format('h A') + "</p>");
 
       $("#events-post").prepend(row);
 
