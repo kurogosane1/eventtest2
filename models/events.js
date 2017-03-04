@@ -61,7 +61,7 @@ module.exports = function (sequelize, DataTypes) {
         });
         Events.hasMany(models.Teams, {
           // through: eventTeams
-          foreignKey: "team_id"
+          foreignKey: "event_id"
         })
       }
     }
