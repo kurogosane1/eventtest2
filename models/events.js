@@ -53,6 +53,7 @@ module.exports = function (sequelize, DataTypes) {
     }
 
   }, {
+    timestamps: false,
     classMethods: {
       associate: function (models) {
         Events.belongsToMany(models.Users, {
@@ -63,12 +64,7 @@ module.exports = function (sequelize, DataTypes) {
           foreignKey: "team_id"
         })
       }
-
     }
-  }, {
-    timestamps: false,
-    createdAt: false,
-    updatedAt: false
   });
   return Events;
 };

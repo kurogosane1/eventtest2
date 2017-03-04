@@ -36,6 +36,7 @@ module.exports = function (sequelize, DataTypes, Users) {
       type: Sequelize.TEXT
     }
   }, {
+    timestamps: false,
     classMethods: {
       associate: function (models) {
         Users.belongsToMany(models.Events, {
@@ -46,10 +47,6 @@ module.exports = function (sequelize, DataTypes, Users) {
         });
       }
     }
-  }, {
-    timestamps: false,
-    createdAt: false,
-    updatedAt: false
   });
   return Users;
 };

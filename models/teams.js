@@ -29,6 +29,7 @@ module.exports = function (sequelize, DataTypes) {
             type: Sequelize.STRING
         }
     }, {
+        timestamps: false,
         classMethods: {
             associate: function (models) {
                 Teams.belongsTo(models.Events, {
@@ -39,13 +40,8 @@ module.exports = function (sequelize, DataTypes) {
                 Teams.belongsToMany(models.Users, {
                     through: "userTeams"
                 });
-            },
-
-        },
-    }, {
-        timestamps: false,
-        createdAt: false,
-        updatedAt: false
+            },  
+        }
     });
     return Teams;
 };
