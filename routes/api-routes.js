@@ -18,15 +18,18 @@ module.exports = function(app){
     });
 // Add a new event
     app.post('/api/event', function(req, res){
-        console.log('event data:');
-        // console.log(req.body);
+        console.log('event data');
+        console.log(req.body);
         db.Events.create({
-            author: req.body.author,
+            creator: req.body.creator,
             event_Name: req.body.event_Name,
             time: req.body.time,
-            attendee: req.body.attendee,
-            location:req.body.location,
-            description: req.body.description,
+            // attendee: req.body.attendee,
+            street_number:req.body.street_number,
+            street:req.body.street,
+            City :req.body.city,
+            state :req.body.state,
+            description : req.body.description,
             when_at: req.body.when_at
         }).then(function(results){
             res.json(results);
@@ -37,6 +40,7 @@ module.exports = function(app){
     //to get from the db the User information//
     app.get('/api/users', function(req, res){
         db.Users.findAll({}).then(function(results){
+            console.log(req);
            res.json(results);
         });
     });
@@ -46,13 +50,13 @@ module.exports = function(app){
         console.log('userinformation');
         console.log(req.body);
         db.Users.create({
-            userName: req.body.userName,
-            First_name: req.body.First_name,
-            Last_name: req.body.Last_name,
-            Skills: req.body.Skills,
-            Language:req.body.Language,
-            Experience: req.body.Experience,
-            Bio: req.body.Bio
+            username: req.body.username,
+            first_name: req.body.first_name,
+            last_name: req.body.last_name,
+            skills: req.body.skills,
+            language:req.body.language,
+            experience: req.body.experience,
+            bio: req.body.bio
         }).then(function(results){
             res.json(results);
         })

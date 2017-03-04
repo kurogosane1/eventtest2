@@ -17,10 +17,13 @@ $("#event-submit").on("click", function(event) {
   // Make a event object
   var newEvent = {
     event_Name: $('#event-name').val().trim(),
-    author: $("#author").val().trim(),
-    description: $("#description").val().trim(),
+    creator: $("#author").val().trim(),
+    description: $("#description").val(),
     when_at: $('#when_at').val(),
-    location: $("#where_at").val().trim(),
+    street_number: $("#street_at").val().trim(),
+    street: $("#streetName_at").val().trim(),
+    city: $("#city_at").val().trim(),
+    state: $("#state_at").val().trim(),
     attendee: parseInt($("#who-attends").val()),
     time: $("#time_at").val()
   };

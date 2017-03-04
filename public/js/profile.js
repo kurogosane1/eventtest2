@@ -16,13 +16,13 @@ $("#user-submit").on("click", function(event) {
 
   // Make a event object
   var newUser = {
-    userName: $('#user_name').val().trim(),
-    First_name: $("#first_name").val().trim(),
-    Last_name: $("#last_name").val().trim(),
-    Skills: $('#skill_sets').val(),
-    Language: $("#languages").val(),
-    Experience: $("#experience").val(),
-    Bio: $("#Bio").val()
+    username: $('#user_name').val().trim(),
+    first_name: $("#first_name").val().trim(),
+    last_name: $("#last_name").val().trim(),
+    skills: $('#skill_sets').val(),
+    language: $("#languages").val(),
+    experience: $("#experience").val(),
+    bio: $("#Bio").val()
   };
 
   console.log(newUser);
@@ -36,9 +36,9 @@ $("#user-submit").on("click", function(event) {
       var row = $("<div>");
       row.addClass("events-created");
 
-      row.append("<p>" + newUser.userName + "</p>");
-      row.append("<p>" + newUser.Experience + "</p>");
-      row.append("<p>At " + (newUser.Bio) + "</p>");
+      row.append("<p>" + newUser.username + "</p>");
+      row.append("<p>" + newUser.experience + "</p>");
+      row.append("<p>At " + (newUser.bio) + "</p>");
 
       $("#user-info").prepend(row);
 
@@ -67,8 +67,8 @@ console.log(data);
       var row = $("<div>");
       row.addClass("user-created");
 
-      row.append("<p>" + data[i].userName + "</p>");
-      row.append("<p>" + data[i].Experience+ "</p>");
+      row.append("<p>" + data[i].username + "</p>");
+      row.append("<p>" + data[i].experience+ "</p>");
     //   var testDate = '01-01-2015 ' + data[i].time;
     //   //var testDate = new Date(a);
     //   row.append("<p> On " + moment(data[i].when_at).format("LL")+ " "+ "at " + moment(testDate).format('h A') + "</p>");
