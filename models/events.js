@@ -12,7 +12,7 @@ var Users = require("./users.js")
 // Creates a "event" model that matches up with DB
 module.exports = function (sequelize, DataTypes) {
   var Events = sequelize.define("Events", {
-    event_id: {
+    id: {
       type: Sequelize.INTEGER,
       autoIncrement: true,
       primaryKey: true
@@ -45,14 +45,15 @@ module.exports = function (sequelize, DataTypes) {
     street: {
       type: Sequelize.STRING
     },
-    City: {
+    city: {
       type: Sequelize.STRING
     },
     state: {
       type: Sequelize.STRING
-    },
+    }
 
   }, {
+    timestamps: false,
     classMethods: {
       associate: function (models) {
         Events.belongsToMany(models.Users, {
@@ -60,15 +61,13 @@ module.exports = function (sequelize, DataTypes) {
         });
         Events.hasMany(models.Teams, {
           // through: eventTeams
-          foreignKey: "team_id"
+          foreignKey: "event_id"
         })
       }
-
     }
-  }, {
 
+  }, {
     timestamps: true
   });
-
   return Events;
 };

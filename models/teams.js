@@ -5,7 +5,7 @@
 var Sequelize = require("sequelize");
 module.exports = function (sequelize, DataTypes) {
     var Teams = sequelize.define("Teams", {
-        team_id: {
+        id: {
             type: Sequelize.INTEGER,
             autoIncrement: true,
             primaryKey: true
@@ -27,25 +27,20 @@ module.exports = function (sequelize, DataTypes) {
         },
         roles: {
             type: Sequelize.STRING
-        },
-        event_id: {
-            type: Sequelize.INTEGER
         }
     }, {
+        timestamps: false,
         classMethods: {
             associate: function (models) {
                 Teams.belongsTo(models.Events, {
-                    // foreignKey: {
-                    //     type: Sequelize.UUID
-                    // }
+                    as: 'EventTeams', constraints: false
                 });
                 Teams.belongsToMany(models.Users, {
                     through: "userTeams"
                 });
+
             },
         },
-    }, {
-        timestamps: true
     });
     return Teams;
 };
