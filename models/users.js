@@ -15,13 +15,13 @@ module.exports = function (sequelize, DataTypes, Users) {
     //   primaryKey: true
     // },
     username: {
-      type:Sequelize.STRING
+      type: Sequelize.STRING
     },
     first_name: {
-      type:Sequelize.STRING
+      type: Sequelize.STRING
     },
     last_name: {
-      type:Sequelize.STRING
+      type: Sequelize.STRING
     },
     skills: {
       type: Sequelize.TEXT,
@@ -35,19 +35,21 @@ module.exports = function (sequelize, DataTypes, Users) {
     bio: {
       type: Sequelize.TEXT
     }
-  },{
+  }, {
     classMethods: {
-        associate: function (models) {
-          Users.belongsToMany(models.Events, {
-            through: "userEvents"
-          });
-          Users.belongsToMany(models.Teams, {
-            through: "userTeams"
-          });
-        },
-        timestamps: false
+      associate: function (models) {
+        Users.belongsToMany(models.Events, {
+          through: "userEvents"
+        });
+        Users.belongsToMany(models.Teams, {
+          through: "userTeams"
+        });
       }
-    });
-
+    }
+  }, {
+    timestamps: false,
+    createdAt: false,
+    updatedAt: false
+  });
   return Users;
 };

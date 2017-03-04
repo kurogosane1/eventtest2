@@ -40,8 +40,12 @@ module.exports = function (sequelize, DataTypes) {
                     through: "userTeams"
                 });
             },
-            timestamps: false
+
         },
+    }, {
+        timestamps: false,
+        createdAt: false,
+        updatedAt: false
     });
     return Teams;
 };

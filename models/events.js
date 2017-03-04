@@ -62,9 +62,13 @@ module.exports = function (sequelize, DataTypes) {
           // through: eventTeams
           foreignKey: "team_id"
         })
-      },
-       timestamps: false
+      }
+
     }
+  }, {
+    timestamps: false,
+    createdAt: false,
+    updatedAt: false
   });
   return Events;
 };
