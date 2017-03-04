@@ -33,9 +33,7 @@ module.exports = function (sequelize, DataTypes) {
         classMethods: {
             associate: function (models) {
                 Teams.belongsTo(models.Events, {
-                    // foreignKey: {
-                    //     type: Sequelize.UUID
-                    // }
+                    as: 'EventTeams', constraints: false
                 });
                 Teams.belongsToMany(models.Users, {
                     through: "userTeams"
